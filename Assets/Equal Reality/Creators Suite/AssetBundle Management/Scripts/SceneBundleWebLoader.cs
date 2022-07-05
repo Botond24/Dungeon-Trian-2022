@@ -68,11 +68,11 @@ public class SceneBundleWebLoader : MonoBehaviour
 		else
 		{
 		
-			using(WWW web = new WWW(rootURL+contentBundleJSONFilename))
+			using(UnityWebRequest web = new UnityWebRequest(rootURL+contentBundleJSONFilename))
 			{
-				yield return web;
+				yield return web.SendWebRequest();
 		    	
-				json = web.text;
+				json = web.downloadHandler.text;
 				
 				PlayerPrefs.SetString(bundlePLayerPrefId,json);
 				PlayerPrefs.Save();
