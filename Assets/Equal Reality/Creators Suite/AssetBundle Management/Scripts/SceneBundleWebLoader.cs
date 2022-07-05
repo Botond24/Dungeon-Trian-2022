@@ -68,7 +68,7 @@ public class SceneBundleWebLoader : MonoBehaviour
 		else
 		{
 		
-			using(UnityWebRequest web = new UnityWebRequest(rootURL+contentBundleJSONFilename))
+			using(UnityWebRequest web = UnityWebRequest.Get(rootURL+contentBundleJSONFilename))
 			{
 				yield return web.SendWebRequest();
 		    	
