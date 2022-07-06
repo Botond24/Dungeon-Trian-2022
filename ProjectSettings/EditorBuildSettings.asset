@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/BNG Framework/Scenes/Vehicle Example.unity
     guid: d96233ee44d985d4fb8dc23a907c06eb
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 95738646979e66347937d1a88ead7f33,
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 6eab06f355e7a2c40bf37845b19baa43,
       type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 2ec24d39f7b5ac84aad7e5df7b4fd3ea,
       type: 2}
@@ -29,5 +29,5 @@ EditorBuildSettings:
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d4171e17169c9ce449e81a11690377e7,
       type: 2}
-    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 2ae0a4a226e8d9e4aba56d1e2eb3977b,
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 2e4b5cab4e028b04d899b28284d2997a,
       type: 2}
