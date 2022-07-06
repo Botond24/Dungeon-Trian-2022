@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class TrainCartGenerator : MonoBehaviour
 {
+	public TrainCart trainCartPrefab;
+	
 	public ArchitectureTheme[] themes;
     
 	public TrainCart CreateCart()
 	{
-		GameObject newObj = new GameObject("Cart");
-		newObj.transform.SetParent(this.transform);
+		TrainCart cart = Instantiate(trainCartPrefab, this.transform.position, this.transform.rotation, this.transform);
 		
-		TrainCart cart = newObj.AddComponent<TrainCart>();
-		
-		
-		int id = Random.Range(0,themes.Length-1);
+		int id = Random.RandomRange(0,themes.Length-1);
 		cart.SetTheme(themes[id]);
 		
 		return cart;
-	}
-	
-	public void ResetCart(TrainCart trainCart)
-	{
-		
 	}
 }

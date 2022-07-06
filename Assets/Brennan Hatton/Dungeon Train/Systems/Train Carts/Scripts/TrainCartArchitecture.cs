@@ -2,19 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainCart : MonoBehaviour
+public class TrainCartArchitecture : MonoBehaviour
 {
 	public ArchitectureTheme theme;
-	public GameObject floor, roof, wallFront, wallBack, wallLeft, wallRight;
+	public GameObject floor, roof, entranceDoor, exitDoor, wallLeft, wallRight;
 	
-	public float tileSize = 5f;
-	public float tilesLength = 1;
-	public float length
-	{
-		get{
-			return tileSize * tilesLength;
-		}
-	}
 	
 	public void SetTheme(ArchitectureTheme newTheme)
 	{
@@ -27,7 +19,7 @@ public class TrainCart : MonoBehaviour
 	{
 		
 		if(floor != null)
-			Destroy(floor);
+			DestroyObject(floor);
 	
 		floor = Instantiate(theme.GetAFloor(),
 			this.transform.position, 
@@ -37,27 +29,27 @@ public class TrainCart : MonoBehaviour
 		yield return new WaitForFixedUpdate();
 		
 		if(roof != null)
-			Destroy(roof);
+			DestroyObject(roof);
 	
 		roof = Instantiate(theme.GetARoof(),
-			this.transform.position + this.transform.up*tileSize, 
+			this.transform.position + this.transform.up*ArchitectureTheme.tileSize, 
 			this.transform.rotation, 
 			this.transform);
 		
 		yield return new WaitForFixedUpdate();
 		
-		if(wallFront != null)
-			Destroy(wallFront);
-		wallFront = Instantiate(theme.GetAWall(),
-			this.transform.position + this.transform.forward*tileSize - this.transform.right*tileSize, 
+		if(entranceDoor != null)
+			DestroyObject(entranceDoor);
+		entranceDoor = Instantiate(theme.GetADoor(),
+			this.transform.position + this.transform.forward*ArchitectureTheme.tileSize - this.transform.right*ArchitectureTheme.tileSize, 
 			this.transform.rotation* Quaternion.Euler(0, 180, 0), 
 			this.transform);
 		
 		yield return new WaitForFixedUpdate();
 		
-		if(wallBack != null)
-			Destroy(wallBack);
-		wallBack = Instantiate(theme.GetAWall(),
+		if(exitDoor != null)
+			DestroyObject(exitDoor);
+		exitDoor = Instantiate(theme.GetADoor(),
 			this.transform.position, 
 			this.transform.rotation, 
 			this.transform);
@@ -65,9 +57,9 @@ public class TrainCart : MonoBehaviour
 		yield return new WaitForFixedUpdate();
 		
 		if(wallLeft != null)
-			Destroy(wallLeft);
+			DestroyObject(wallLeft);
 		wallLeft = Instantiate(theme.GetAWall(),
-			this.transform.position - this.transform.right*tileSize,
+			this.transform.position - this.transform.right*ArchitectureTheme.tileSize,
 			this.transform.rotation* Quaternion.Euler(0, 90, 0), 
 			this.transform);
 		//transform.Rotate(Vector3.right, 90, 1);
@@ -75,22 +67,10 @@ public class TrainCart : MonoBehaviour
 		yield return new WaitForFixedUpdate();
 		
 		if(wallRight != null)
-			Destroy(wallRight);
+			DestroyObject(wallRight);
 		wallRight = Instantiate(theme.GetAWall(),
-			this.transform.position + this.transform.forward*tileSize, 
+			this.transform.position + this.transform.forward*ArchitectureTheme.tileSize, 
 			this.transform.rotation* Quaternion.Euler(0, -90, 0), 
 			this.transform);
 	}
-	
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
